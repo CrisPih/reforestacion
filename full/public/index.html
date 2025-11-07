@@ -5,23 +5,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Sembrar Futuro — Reforestación Guayaquil</title>
-
-  <!-- Tailwind (CDN para desarrollo) -->
+  
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-  <!-- Fonts -->
+  
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet" />
-
-  <!-- Estilos locales opcional -->
-  <link rel="stylesheet" href="css/tailwind/tailwind.min.css" />
-
-  <!-- Alpine (para el formulario) -->
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+  
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
-
-  <meta name="description"
-    content="Sembrar Futuro — Reto ciudadano de reforestación en Guayaquil. Únete: plantar, mantenimiento, donar." />
+  
+  <meta name="description" content="Sembrar Futuro — Reto ciudadano de reforestación en Guayaquil. Únete: plantar, mantenimiento, donar." />
 </head>
 
 <body class="antialiased bg-gray-50 text-gray-800 font-sans">
@@ -34,6 +26,7 @@
         <a href="#resultados" class="text-emerald-800 font-medium">Resultados</a>
         <a href="#registrate" class="text-emerald-800 font-medium">Regístrate</a>
         <a href="#mercancia" class="text-emerald-800 font-medium">Mercancía</a>
+        <a href="#votacion" class="text-emerald-800 font-medium">Votación</a>
         <a href="#donaciones" class="text-emerald-800 font-medium">Donaciones</a>
       </nav>
       <button class="md:hidden" aria-label="Abrir menú">☰</button>
@@ -43,27 +36,20 @@
   <!-- HERO -->
   <section class="bg-gradient-to-b from-lime-50 to-white py-20">
     <div class="container mx-auto px-4 text-center">
-      <p class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-semibold mb-4">Por un
-        Guayaquil más verde</p>
+      <p class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-semibold mb-4">Por un Guayaquil más verde</p>
       <h1 class="text-5xl font-extrabold mb-4">¡Reforestemos juntos!</h1>
-      <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-8">Únete al reto ciudadano "Sembrar Futuro": planta,
-        cuida, aprende y participa con tu barrio o escuela.</p>
-      <a href="#registrate" class="inline-block bg-emerald-700 text-white px-6 py-3 rounded-full font-semibold">Quiero
-        ayudar</a>
+      <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-8">Únete al reto ciudadano "Sembrar Futuro": planta, cuida, aprende y participa con tu barrio o escuela.</p>
+      <a href="#registrate" class="inline-block bg-emerald-700 text-white px-6 py-3 rounded-full font-semibold">Quiero ayudar</a>
     </div>
   </section>
 
-  <!-- DIAGNÓSTICO RÁPIDO -->
+  <!-- DIAGNÓSTICO -->
   <section class="py-12 lg:py-20">
     <div class="container mx-auto px-4">
       <div class="bg-white rounded-2xl p-8 shadow-md">
         <h2 class="text-2xl font-bold mb-4">Diagnóstico</h2>
-        <p class="text-gray-700 mb-4">En muchos sectores de Guayaquil la cobertura urbana escaló rápidamente: la
-          urbanización llegó a ocupar hasta ~70% del territorio en zonas específicas mientras la cobertura forestal
-          cayó a valores cercanos al 10%. Esto provoca pérdida de hábitat, aumento de isla de calor y mayor riesgo de
-          inundaciones.</p>
-        <p class="text-red-700 font-semibold">Cada hectárea urbanizada sin planificación es una hectárea menos para
-          la vida y la resiliencia urbana.</p>
+        <p class="text-gray-700 mb-4">En muchos sectores de Guayaquil la cobertura urbana escaló rápidamente: la urbanización llegó a ocupar hasta ~70% del territorio en zonas específicas mientras la cobertura forestal cayó a valores cercanos al 10%. Esto provoca pérdida de hábitat, aumento de isla de calor y mayor riesgo de inundaciones.</p>
+        <p class="text-red-700 font-semibold">Cada hectárea urbanizada sin planificación es una hectárea menos para la vida y la resiliencia urbana.</p>
       </div>
     </div>
   </section>
@@ -90,7 +76,7 @@
     </div>
   </section>
 
-  <!-- REGISTRATE (Formulario principal) -->
+  <!-- REGISTRATE -->
   <section id="registrate" class="py-12 lg:py-20">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
@@ -101,38 +87,29 @@
             <div id="registro-count" class="text-2xl font-extrabold text-emerald-700">0</div>
           </div>
         </div>
-
-        <p class="text-gray-600 mb-6">Déjanos tus datos y dinos cómo quieres ayudar. No compartiremos tu información.
-          (Política de privacidad)</p>
-
-        <!-- Formulario manejado por Alpine; registrationForm provisto en function.js -->
+        <p class="text-gray-600 mb-6">Déjanos tus datos y dinos cómo quieres ayudar. No compartiremos tu información.</p>
+        
         <form x-data="registrationForm()" @submit.prevent="submit()" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm font-medium text-gray-700">Nombre</label>
-              <input x-model="form.nombre" type="text" required class="mt-1 block w-full rounded-md border p-3"
-                placeholder="Nombre" />
+              <input x-model="form.nombre" type="text" required class="mt-1 block w-full rounded-md border p-3" placeholder="Nombre" />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700">Apellido</label>
-              <input x-model="form.apellido" type="text" required class="mt-1 block w-full rounded-md border p-3"
-                placeholder="Apellido" />
+              <input x-model="form.apellido" type="text" required class="mt-1 block w-full rounded-md border p-3" placeholder="Apellido" />
             </div>
           </div>
-
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm font-medium text-gray-700">Correo</label>
-              <input x-model="form.email" type="email" required class="mt-1 block w-full rounded-md border p-3"
-                placeholder="tu@correo.com" />
+              <input x-model="form.email" type="email" required class="mt-1 block w-full rounded-md border p-3" placeholder="tu@correo.com" />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700">Teléfono</label>
-              <input x-model="form.telefono" type="tel" pattern="[0-9+\s()-]{6,20}"
-                class="mt-1 block w-full rounded-md border p-3" placeholder="0991234567" />
+              <input x-model="form.telefono" type="tel" pattern="[0-9+\s()-]{6,20}" class="mt-1 block w-full rounded-md border p-3" placeholder="0991234567" />
             </div>
           </div>
-
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">¿En qué te gustaría ayudar?</label>
             <select x-model="form.tipo" class="mt-1 block w-full rounded-md border p-3" required>
@@ -142,46 +119,43 @@
               <option value="otra">Otra</option>
             </select>
           </div>
-
           <div class="mb-4">
             <label class="inline-flex items-center">
               <input type="checkbox" x-model="form.acepta" class="rounded" />
               <span class="ml-2 text-sm text-gray-600">Acepto recibir información por correo electrónico</span>
             </label>
           </div>
-
           <div class="flex items-center gap-3">
-            <button type="submit" class="bg-emerald-700 text-white px-5 py-2 rounded-md font-semibold">Enviar
-              registro</button>
+            <button type="submit" class="bg-emerald-700 text-white px-5 py-2 rounded-md font-semibold">Enviar registro</button>
             <button type="button" @click="reset()" class="bg-gray-100 px-4 py-2 rounded-md">Limpiar</button>
           </div>
-
           <template x-if="sent">
-            <p class="mt-4 text-green-700">¡Gracias! Tu registro fue recibido. Te contactaremos con más información.
-            </p>
+            <p class="mt-4 text-green-700">¡Gracias! Tu registro fue recibido. Te contactaremos con más información.</p>
           </template>
-
           <template x-if="error">
             <p class="mt-4 text-red-600">Por favor completa los campos obligatorios correctamente.</p>
           </template>
         </form>
-
-        <p class="text-xs text-gray-400 mt-6">Nota: En desarrollo los registros se guardan en local (simulación). Para
-          envío
-          real conecta a un backend o Firebase (ver instrucciones).</p>
       </div>
     </div>
   </section>
 
-  <!-- MERCANCIA (cargada desde BD) -->
+  <!-- MERCANCIA (cargada desde Firebase) -->
   <section id="mercancia" class="py-12 lg:py-20 bg-gray-50">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow">
-        <h3 class="text-2xl font-bold mb-4">Mercancía</h3>
-        <p class="text-gray-600 mb-6">Camisetas, stickers y más. Los items se cargan dinámicamente desde la base de
-          datos.</p>
+      <div class="max-w-6xl mx-auto bg-white rounded-2xl p-8 shadow">
+        <h3 class="text-3xl font-bold mb-4 text-center">Mercancía</h3>
+        <p class="text-gray-600 mb-6 text-center">Camisetas, stickers y más. Los items se cargan dinámicamente desde la base de datos.</p>
+        
+        <!-- Filtro por categoría -->
+        <div class="max-w-md mx-auto mb-8">
+          <label for="categories" class="block mb-2 text-sm font-medium text-gray-900">Filtrar por tipo</label>
+          <select id="categories" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+            <option value="" selected>Todos los productos</option>
+          </select>
+        </div>
 
-        <!-- Contenedor que el JS rellenará -->
+        <!-- Contenedor de productos -->
         <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="col-span-full text-center py-8">
             <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-700"></div>
@@ -192,31 +166,72 @@
     </div>
   </section>
 
-  <!-- DONACIONES (placeholder) -->
-  <section id="donaciones" class="py-12 lg:py-20">
+  <!-- VOTACION (Sistema en tiempo real) -->
+  <section id="votacion" class="py-12 lg:py-20 bg-white">
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow">
-        <h3 class="text-2xl font-bold mb-2">Donaciones (próximamente)</h3>
-        <p class="text-gray-600">Se añadirá una pasarela segura (Stripe / PayPal / transferencia). Indícame cuál y
-          la integro.</p>
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-extrabold text-center mb-4">Vota por tu Especie Favorita</h2>
+        <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+          Ayúdanos a priorizar las especies que más te gustaría ver plantadas en nuestra próxima jornada.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Formulario de votación -->
+          <div class="bg-gradient-to-br from-emerald-50 to-lime-100 p-8 rounded-2xl shadow-2xl">
+            <h3 class="text-2xl font-bold mb-6">🗳️ Elige una Especie</h3>
+            <form id="form_voting" class="bg-white p-6 rounded-lg shadow-lg">
+              <label for="user_name" class="block text-gray-700 font-medium mb-1">Nombre:</label>
+              <input type="text" id="user_name" name="user_name" placeholder="Tu nombre"
+                class="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+
+              <label for="select_product" class="block text-gray-700 font-medium mb-1">Especie de Árbol:</label>
+              <select id="select_product" name="select_product"
+                class="w-full mb-4 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <option value="" disabled selected>Selecciona una especie</option>
+              </select>
+
+              <button type="submit"
+                class="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition font-medium">
+                Votar por esta Especie
+              </button>
+            </form>
+          </div>
+
+          <!-- Resultados en tiempo real -->
+          <div class="py-4">
+            <h3 class="text-2xl font-bold mb-6">📊 Especies Más Votadas</h3>
+            <div id="results" class="space-y-4">
+              <div class="text-center py-8">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-4 border-emerald-600 border-t-4"></div>
+                <p class="mt-4 text-gray-600">Cargando resultados...</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER/FOOTER (manteniendo tu botoncito) -->
+  <!-- DONACIONES -->
+  <section id="donaciones" class="py-12 lg:py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow">
+        <h3 class="text-2xl font-bold mb-2">Donaciones (próximamente)</h3>
+        <p class="text-gray-600">Se añadirá una pasarela segura (Stripe / PayPal / transferencia).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
   <section class="relative py-12 lg:py-24 bg-orange-50 overflow-hidden">
     <div class="container mx-auto px-4">
       <div class="w-full md:w-5/12 lg:w-4/12 px-4 mx-auto">
         <div class="max-w-sm p-8 bg-teal-900 rounded-2xl">
           <h5 class="text-xl font-medium text-white mb-4">¡Mantente informado!</h5>
-          <p class="text-sm text-white opacity-80 leading-normal mb-10">Suscríbete para recibir noticias sobre las
-            jornadas de siembra y talleres.</p>
+          <p class="text-sm text-white opacity-80 leading-normal mb-10">Suscríbete para recibir noticias sobre las jornadas de siembra y talleres.</p>
           <div class="flex flex-col">
-            <input id="newsletter-input"
-              class="h-12 w-full px-4 py-1 placeholder-gray-700 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full"
-              type="email" placeholder="Tu correo electrónico..." />
-            <button id="newsletter-btn"
-              class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+            <input id="newsletter-input" class="h-12 w-full px-4 py-1 placeholder-gray-700 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full" type="email" placeholder="Tu correo electrónico..." />
+            <button id="newsletter-btn" class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
               Suscribirme
             </button>
           </div>
@@ -224,10 +239,31 @@
         </div>
       </div>
       <div class="flex flex-wrap -mb-3 justify-between mt-12">
-        <p class="text-sm text-gray-500 mb-3">Plantando esperanza para el futuro 🌱 · Plantilla adaptada</p>
+        <p class="text-sm text-gray-500 mb-3">Plantando esperanza para el futuro 🌱</p>
       </div>
     </div>
   </section>
+
+  <!-- Toast de notificación -->
+  <div id="toast-interactive"
+    class="hidden fixed right-5 bottom-5 flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow-lg border border-gray-200 z-50"
+    role="alert">
+    <div class="flex w-full">
+      <div class="ms-3 text-sm font-normal flex-1">
+        <span class="mb-1 text-sm font-extrabold text-gray-900">¡Voto Registrado! 🌳</span>
+        <div class="mb-2 text-gray-700">Gracias por participar. Tu voto ha sido contabilizado.</div>
+        <button onclick="document.getElementById('toast-interactive').classList.add('hidden')"
+          class="inline-flex w-full justify-center px-3 py-1.5 text-xs font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700">Cerrar</button>
+      </div>
+      <button type="button" onclick="document.getElementById('toast-interactive').classList.add('hidden')"
+        class="ms-auto -mx-1.5 -my-1.5 p-1.5 inline-flex items-center justify-center w-8 h-8 text-gray-400 bg-white rounded-lg hover:text-gray-900 hover:bg-gray-100">
+        <span class="sr-only">Cerrar</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 14 14">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="bg-amber-50 py-8">
@@ -237,14 +273,10 @@
     </div>
   </footer>
 
-  <!-- Scripts: Firebase + función del front (módulos) -->
-  <!-- Asegúrate de que las rutas sean correctas en tu repo -->
-  <!-- 1) Firebase (inicializa y exporta funciones) -->
-  <!-- correcto si los archivos están en la carpeta js/ en la raíz del proyecto -->
-  <script type="module" src="./firebase.js"></script>
-  <script type="module" src="./functions.js"></script>
-  <script type="module" src="./file01.js"></script>
-  <script type="module" src="./function.js"></script>
+  <!-- Scripts -->
+  <script type="module" src="./js/firebase.js"></script>
+  <script type="module" src="./js/file01.js"></script>
+  <script type="module" src="./js/function.js"></script>
 
 </body>
 

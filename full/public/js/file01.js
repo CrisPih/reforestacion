@@ -17,9 +17,9 @@ const renderProducts = () => {
   fetchProducts('https://data-dawm.github.io/datum/reseller/products.json')
     .then(result => {
       if (result.success) {
-        allProducts = result.body; // Todos los productos
-        displayProducts(allProducts.slice(0, 6)); // Mostramos solo 6 inicialmente
-        populateVotingSelect(allProducts);  // Llenar select de votación
+        allProducts = result.body;
+        displayProducts(allProducts.slice(0, 6));
+        populateVotingSelect(allProducts);
       } else {
         showError('productos', result.body);
       }
@@ -45,22 +45,22 @@ const displayProducts = (products) => {
 
   container.innerHTML = products.map(product => `
     <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-      <div class="relative h-48 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
+      <div class="relative h-48 bg-gradient-to-br from-green-100 to-green-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
         <img src="${product.imgUrl}" alt="${product.title}" class="h-full w-full object-contain">
       </div>
       <div class="p-6">
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300 mb-2">
+        <span class="inline-block px-3 py-1 text-xs font-semibold text-green-600 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300 mb-2">
           ${product.category}
         </span>
         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
           ${product.title.length > 30 ? product.title.substring(0, 30) + '...' : product.title}
         </h3>
         <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          ${product.description || 'Producto de alta calidad para el cuidado dental'}
+          ${product.description || 'Producto eco-amigable para reforestación y conservación'}
         </p>
         <div class="flex items-center justify-between">
-          <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">$${product.price}</span>
-          <a href="${product.productURL}" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">
+          <span class="text-2xl font-bold text-green-600 dark:text-green-400">$${product.price}</span>
+          <a href="${product.productURL}" target="_blank" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-medium">
             Ver más
           </a>
         </div>
@@ -76,12 +76,12 @@ const displayProducts = (products) => {
  */
 const getProductEmoji = (category) => {
   const emojis = {
-    'Cepillos': '🪥',
-    'Pasta Dental': '🦷',
-    'Enjuague': '💧',
-    'Hilo Dental': '🧵',
-    'Blanqueamiento': '✨',
-    'default': '🛒'
+    'Semillas': '🌱',
+    'Herramientas': '🛠️',
+    'Abonos': '🌿',
+    'Plantines': '🌳',
+    'Equipos': '⚙️',
+    'default': '🌲'
   };
   return emojis[category] || emojis.default;
 };
@@ -125,23 +125,20 @@ const renderCategories = async () => {
  * @returns {void}
  */
 const filterProducts = (categoryName) => {
-  // Si selecciona "Todas las categorías" mostramos todo
   if (!categoryName || categoryName === 'Todas las categorías') {
     displayProducts(allProducts);
     return;
   }
 
-  // Buscamos el ID de la categoría seleccionada
   const category = allCategories.find(cat => cat.name === categoryName);
   if (!category) {
-    displayProducts([]); // no encontró la categoría
+    displayProducts([]);
     return;
   }
 
   const filtered = allProducts.filter(product => product.category_id.toString() === category.id);
   displayProducts(filtered);
 };
-
 
 /**
  * Llena el select de votación con los productos
@@ -152,7 +149,7 @@ const populateVotingSelect = (products) => {
   const select = document.getElementById('select_product');
   if (!select) return;
 
-  select.innerHTML = '<option value="" disabled selected>Selecciona un producto</option>';
+  select.innerHTML = '<option value="" disabled selected>Selecciona una especie</option>';
 
   products.forEach(product => {
     const option = document.createElement('option');
@@ -184,13 +181,11 @@ const enableForm = () => {
       return;
     }
 
-    // Mostrar loading en el botón
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span>Enviando...';
 
-    // Guardar voto (puedes usar tu función saveVote)
     saveVote(productId, userName)
       .then(result => {
         submitBtn.disabled = false;
@@ -199,7 +194,7 @@ const enableForm = () => {
         if (result.success) {
           alert('✅ ' + result.message);
           form.reset();
-          displayVotes(); // Actualizar tabla de votos
+          displayVotes();
         } else {
           alert('❌ ' + result.message);
         }
@@ -212,7 +207,6 @@ const enableForm = () => {
   });
 };
 
-
 /**
  * Muestra los votos en una tabla
  * @description Obtiene y renderiza los votos desde Firebase
@@ -224,7 +218,7 @@ const displayVotes = async () => {
 
   resultsContainer.innerHTML = `
     <div class="text-center py-4">
-      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
       <p class="mt-2 text-gray-600 dark:text-gray-300">Cargando votos...</p>
     </div>
   `;
@@ -235,25 +229,22 @@ const displayVotes = async () => {
     if (result.success && result.data) {
       const votes = result.data;
 
-      // Contar votos por producto
       const voteCounts = {};
       Object.values(votes).forEach(vote => {
         voteCounts[vote.productId] = (voteCounts[vote.productId] || 0) + 1;
       });
 
-      // Obtener nombres de productos
       const productNames = {};
       allProducts.forEach(product => {
         productNames[product.asin] = product.title;
       });
 
-      // Crear tabla
       let tableHTML = `
         <div class="overflow-x-auto">
           <table class="w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-            <thead class="bg-blue-600 text-white">
+            <thead class="bg-green-600 text-white">
               <tr>
-                <th class="px-6 py-4 text-left font-semibold">Producto</th>
+                <th class="px-6 py-4 text-left font-semibold">Especie</th>
                 <th class="px-6 py-4 text-center font-semibold">Total de Votos</th>
               </tr>
             </thead>
@@ -269,11 +260,10 @@ const displayVotes = async () => {
           </tr>
         `;
       } else {
-        // Ordenar por cantidad de votos
         const sortedVotes = Object.entries(voteCounts).sort((a, b) => b[1] - a[1]);
 
         sortedVotes.forEach(([productId, count], index) => {
-          const productName = productNames[productId] || `Producto ${productId}`;
+          const productName = productNames[productId] || `Especie ${productId}`;
           const medalEmoji = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
 
           tableHTML += `
@@ -282,7 +272,7 @@ const displayVotes = async () => {
                 ${medalEmoji} ${productName}
               </td>
               <td class="px-6 py-4 text-center">
-                <span class="inline-flex items-center justify-center px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full font-bold">
+                <span class="inline-flex items-center justify-center px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full font-bold">
                   ${count}
                 </span>
               </td>
@@ -339,7 +329,7 @@ const hideToast = () => {
 };
 
 /**
- * Configura el botón "Ver demo" para abrir video
+ * Configura el botón demo
  * @description Agrega evento click al botón demo
  * @returns {void}
  */
@@ -375,30 +365,26 @@ const showError = (type, message) => {
 
 // ========== FUNCIÓN DE AUTOEJECUCIÓN ==========
 (() => {
-  console.log('🦷 Bienvenido a Consultorio Dental Arrobo');
+  console.log('🌳 Bienvenido a Reforestación Ecuador');
 
   fetchProducts('https://data-dawm.github.io/datum/reseller/products.json')
     .then(result => {
       if (result.success) {
-        console.log(result.body); // mira esto en la consola del navegador
+        console.log(result.body);
       } else {
         console.error('Error cargando productos:', result.body);
       }
     });
 
-  // Cargar productos y categorías
   renderProducts();
   renderCategories();
 
-  // Configurar eventos
   showVideo();
   enableForm();
   displayVotes();
 
-  // Mostrar toast después de 3 segundos
   setTimeout(showToast, 3000);
 
-  // Event listener para filtro de categorías
   const categoriesSelect = document.getElementById('categories');
   if (categoriesSelect) {
     categoriesSelect.addEventListener('change', (e) => {
@@ -406,7 +392,6 @@ const showError = (type, message) => {
     });
   }
 
-  // Event listener para cerrar toast
   const toastCloseBtn = document.querySelector('[data-dismiss-target="#toast-interactive"]');
   if (toastCloseBtn) {
     toastCloseBtn.addEventListener('click', hideToast);
