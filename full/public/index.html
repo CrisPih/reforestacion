@@ -5,15 +5,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Sembrar Futuro — Reforestación Guayaquil</title>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  
+
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
-  
-  <meta name="description" content="Sembrar Futuro — Reto ciudadano de reforestación en Guayaquil. Únete: plantar, mantenimiento, donar." />
+
+  <meta name="description"
+    content="Sembrar Futuro — Reto ciudadano de reforestación en Guayaquil. Únete: plantar, mantenimiento, donar." />
 </head>
 
 <body class="antialiased bg-gray-50 text-gray-800 font-sans">
@@ -36,10 +38,13 @@
   <!-- HERO -->
   <section class="bg-gradient-to-b from-lime-50 to-white py-20">
     <div class="container mx-auto px-4 text-center">
-      <p class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-semibold mb-4">Por un Guayaquil más verde</p>
+      <p class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-semibold mb-4">Por un Guayaquil
+        más verde</p>
       <h1 class="text-5xl font-extrabold mb-4">¡Reforestemos juntos!</h1>
-      <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-8">Únete al reto ciudadano "Sembrar Futuro": planta, cuida, aprende y participa con tu barrio o escuela.</p>
-      <a href="#registrate" class="inline-block bg-emerald-700 text-white px-6 py-3 rounded-full font-semibold">Quiero ayudar</a>
+      <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-8">Únete al reto ciudadano "Sembrar Futuro": planta, cuida,
+        aprende y participa con tu barrio o escuela.</p>
+      <a href="#registrate" class="inline-block bg-emerald-700 text-white px-6 py-3 rounded-full font-semibold">Quiero
+        ayudar</a>
     </div>
   </section>
 
@@ -48,8 +53,12 @@
     <div class="container mx-auto px-4">
       <div class="bg-white rounded-2xl p-8 shadow-md">
         <h2 class="text-2xl font-bold mb-4">Diagnóstico</h2>
-        <p class="text-gray-700 mb-4">En muchos sectores de Guayaquil la cobertura urbana escaló rápidamente: la urbanización llegó a ocupar hasta ~70% del territorio en zonas específicas mientras la cobertura forestal cayó a valores cercanos al 10%. Esto provoca pérdida de hábitat, aumento de isla de calor y mayor riesgo de inundaciones.</p>
-        <p class="text-red-700 font-semibold">Cada hectárea urbanizada sin planificación es una hectárea menos para la vida y la resiliencia urbana.</p>
+        <p class="text-gray-700 mb-4">En muchos sectores de Guayaquil la cobertura urbana escaló rápidamente: la
+          urbanización llegó a ocupar hasta ~70% del territorio en zonas específicas mientras la cobertura forestal cayó
+          a valores cercanos al 10%. Esto provoca pérdida de hábitat, aumento de isla de calor y mayor riesgo de
+          inundaciones.</p>
+        <p class="text-red-700 font-semibold">Cada hectárea urbanizada sin planificación es una hectárea menos para la
+          vida y la resiliencia urbana.</p>
       </div>
     </div>
   </section>
@@ -87,27 +96,32 @@
             <div id="registro-count" class="text-2xl font-extrabold text-emerald-700">0</div>
           </div>
         </div>
-        <p class="text-gray-600 mb-6">Déjanos tus datos y dinos cómo quieres ayudar. No compartiremos tu información.</p>
-        
+        <p class="text-gray-600 mb-6">Déjanos tus datos y dinos cómo quieres ayudar. No compartiremos tu información.
+        </p>
+
         <form x-data="registrationForm()" @submit.prevent="submit()" novalidate>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm font-medium text-gray-700">Nombre</label>
-              <input x-model="form.nombre" type="text" required class="mt-1 block w-full rounded-md border p-3" placeholder="Nombre" />
+              <input x-model="form.nombre" type="text" required class="mt-1 block w-full rounded-md border p-3"
+                placeholder="Nombre" />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700">Apellido</label>
-              <input x-model="form.apellido" type="text" required class="mt-1 block w-full rounded-md border p-3" placeholder="Apellido" />
+              <input x-model="form.apellido" type="text" required class="mt-1 block w-full rounded-md border p-3"
+                placeholder="Apellido" />
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div>
               <label class="block text-sm font-medium text-gray-700">Correo</label>
-              <input x-model="form.email" type="email" required class="mt-1 block w-full rounded-md border p-3" placeholder="tu@correo.com" />
+              <input x-model="form.email" type="email" required class="mt-1 block w-full rounded-md border p-3"
+                placeholder="tu@correo.com" />
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700">Teléfono</label>
-              <input x-model="form.telefono" type="tel" pattern="[0-9+\s()-]{6,20}" class="mt-1 block w-full rounded-md border p-3" placeholder="0991234567" />
+              <input x-model="form.telefono" type="tel" pattern="[0-9+\s()-]{6,20}"
+                class="mt-1 block w-full rounded-md border p-3" placeholder="0991234567" />
             </div>
           </div>
           <div class="mb-4">
@@ -126,7 +140,8 @@
             </label>
           </div>
           <div class="flex items-center gap-3">
-            <button type="submit" class="bg-emerald-700 text-white px-5 py-2 rounded-md font-semibold">Enviar registro</button>
+            <button type="submit" class="bg-emerald-700 text-white px-5 py-2 rounded-md font-semibold">Enviar
+              registro</button>
             <button type="button" @click="reset()" class="bg-gray-100 px-4 py-2 rounded-md">Limpiar</button>
           </div>
           <template x-if="sent">
@@ -145,12 +160,14 @@
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto bg-white rounded-2xl p-8 shadow">
         <h3 class="text-3xl font-bold mb-4 text-center">Mercancía</h3>
-        <p class="text-gray-600 mb-6 text-center">Camisetas, stickers y más. Los items se cargan dinámicamente desde la base de datos.</p>
-        
+        <p class="text-gray-600 mb-6 text-center">Camisetas, stickers y más. Los items se cargan dinámicamente desde la
+          base de datos.</p>
+
         <!-- Filtro por categoría -->
         <div class="max-w-md mx-auto mb-8">
           <label for="categories" class="block mb-2 text-sm font-medium text-gray-900">Filtrar por tipo</label>
-          <select id="categories" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
+          <select id="categories"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">
             <option value="" selected>Todos los productos</option>
           </select>
         </div>
@@ -202,7 +219,8 @@
             <h3 class="text-2xl font-bold mb-6">📊 Especies Más Votadas</h3>
             <div id="results" class="space-y-4">
               <div class="text-center py-8">
-                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-4 border-emerald-600 border-t-4"></div>
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-4 border-emerald-600 border-t-4">
+                </div>
                 <p class="mt-4 text-gray-600">Cargando resultados...</p>
               </div>
             </div>
@@ -228,10 +246,14 @@
       <div class="w-full md:w-5/12 lg:w-4/12 px-4 mx-auto">
         <div class="max-w-sm p-8 bg-teal-900 rounded-2xl">
           <h5 class="text-xl font-medium text-white mb-4">¡Mantente informado!</h5>
-          <p class="text-sm text-white opacity-80 leading-normal mb-10">Suscríbete para recibir noticias sobre las jornadas de siembra y talleres.</p>
+          <p class="text-sm text-white opacity-80 leading-normal mb-10">Suscríbete para recibir noticias sobre las
+            jornadas de siembra y talleres.</p>
           <div class="flex flex-col">
-            <input id="newsletter-input" class="h-12 w-full px-4 py-1 placeholder-gray-700 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full" type="email" placeholder="Tu correo electrónico..." />
-            <button id="newsletter-btn" class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+            <input id="newsletter-input"
+              class="h-12 w-full px-4 py-1 placeholder-gray-700 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full"
+              type="email" placeholder="Tu correo electrónico..." />
+            <button id="newsletter-btn"
+              class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
               Suscribirme
             </button>
           </div>
@@ -274,9 +296,10 @@
   </footer>
 
   <!-- Scripts -->
-  <script type="module" src="/js/firebase.js"></script>
-  <script type="module" src="/js/file01.js"></script>
-  <script type="module" src="/js/function.js"></script>
+  <script type="module" src="/src/js/firebase.js"></script>
+  <script type="module" src="/src/js/file01.js"></script>
+  <script type="module" src="/src/js/function.js"></script>
+
 
 </body>
 
