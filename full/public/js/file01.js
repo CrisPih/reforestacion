@@ -78,7 +78,7 @@ const setupDiagnosticoCarousel = () => {
 ====================================== */
 
 const renderProducts = () => {
-  fetchProducts('data/merch-products.json')
+  fetchProducts('/data/merch-products.json')
     .then(result => {
       if (result.success) {
         allProducts = result.body;
@@ -145,7 +145,7 @@ const displayProducts = (products) => {
 
 const renderCategories = async () => {
   try {
-    const result = await fetchCategories('data/merch-categories.xml');
+    const result = await fetchCategories('/data/merch-categories.xml');
 
     if (result.success) {
       const container = document.getElementById('categories');
@@ -190,7 +190,7 @@ const filterProducts = (categoryName) => {
 ====================================== */
 
 const loadSpecies = () => {
-  fetchSpecies('data/species.json')
+  fetchSpecies('/data/species.json')
     .then(result => {
       if (result.success) {
         allSpecies = result.body;   // [{ id, name, ... }, ...]
