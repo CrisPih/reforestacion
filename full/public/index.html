@@ -156,53 +156,112 @@
 
 
   <!-- PROGRAMAS Y TALLERES -->
-  <section id="programas" class="py-12 lg:py-20 bg-white">
+  <section id="programas" class="py-16 bg-white">
     <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-emerald-900 text-center">
-          Programas y Talleres
-        </h2>
-        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-10">
-          Sembrar Futuro trabaja con escuelas, barrios y organizaciones vecinales
-          para que la reforestación no sea solo una jornada aislada, sino un proceso
-          educativo y comunitario continuo.
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <h2 class="text-4xl font-bold text-emerald-900 mb-3">Programas y Talleres</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Sembrar Futuro trabaja con escuelas, barrios y organizaciones vecinales para que la reforestación
+          no sea solo una jornada aislada, sino un proceso educativo y comunitario continuo.
         </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Tarjeta 1 -->
-          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Talleres en escuelas -->
+        <article
+          class="program-card bg-[#eaffe6] rounded-3xl shadow-[0_18px_40px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+
+          <!-- Texto -->
+          <div class="px-8 pt-8 pb-4">
             <h3 class="text-xl font-bold text-emerald-900 mb-3">Talleres en escuelas</h3>
-            <ul class="space-y-2 text-emerald-800">
-              <li>• Introducción a árboles nativos y su importancia.</li>
-              <li>• Dinámicas sobre cambio climático y sombra urbana.</li>
-              <li>• Pequeños viveros escolares para cuidar plantines.</li>
+            <ul class="list-disc list-inside space-y-2 text-emerald-900 text-sm md:text-base">
+              <li>Introducción a árboles nativos y su importancia.</li>
+              <li>Dinámicas sobre cambio climático y sombra urbana.</li>
+              <li>Pequeños viveros escolares para cuidar plantines.</li>
             </ul>
           </div>
 
-          <!-- Tarjeta 2 -->
-          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+          <!-- Trigger flecha -->
+          <button type="button" data-toggle-panel
+            class="w-full flex items-center justify-center gap-2 pb-3 text-emerald-800 text-sm font-medium focus:outline-none">
+            <span>Ver foto</span>
+            <svg data-arrow xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Panel oculto -->
+          <div
+            class="program-extra h-0 opacity-0 border-t border-emerald-100 transition-[height,opacity] duration-500 ease-out">
+            <img src="images/tallerreforestacion.png" alt="Talleres de reforestación en escuelas"
+              class="w-full max-h-64 object-cover">
+          </div>
+        </article>
+
+        <!-- Card 2: Jornadas comunitarias -->
+        <article
+          class="program-card bg-[#eaffe6] rounded-3xl shadow-[0_18px_40px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+
+          <div class="px-8 pt-8 pb-4">
             <h3 class="text-xl font-bold text-emerald-900 mb-3">Jornadas comunitarias</h3>
-            <ul class="space-y-2 text-emerald-800">
-              <li>• Mapeo participativo de puntos críticos sin árboles.</li>
-              <li>• Siembra en parques, veredas y espacios barriales.</li>
-              <li>• Capacitación básica en riego y mantenimiento.</li>
+            <ul class="list-disc list-inside space-y-2 text-emerald-900 text-sm md:text-base">
+              <li>Mapeo participativo de puntos críticos sin árboles.</li>
+              <li>Siembra en parques, veredas y espacios barriales.</li>
+              <li>Capacitación básica en riego y mantenimiento.</li>
             </ul>
           </div>
 
-          <!-- Tarjeta 3 -->
-          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+          <button type="button" data-toggle-panel
+            class="w-full flex items-center justify-center gap-2 pb-3 text-emerald-800 text-sm font-medium focus:outline-none">
+            <span>Ver foto</span>
+            <svg data-arrow xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div
+            class="program-extra h-0 opacity-0 border-t border-emerald-100 transition-[height,opacity] duration-500 ease-out">
+            <img src="images/comunidad.jpeg" alt="Jornadas comunitarias de reforestación"
+              class="w-full max-h-64 object-cover">
+          </div>
+        </article>
+
+        <!-- Card 3: Charlas y acompañamiento -->
+        <article
+          class="program-card bg-[#eaffe6] rounded-3xl shadow-[0_18px_40px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+
+          <div class="px-8 pt-8 pb-4">
             <h3 class="text-xl font-bold text-emerald-900 mb-3">Charlas y acompañamiento</h3>
-            <ul class="space-y-2 text-emerald-800">
-              <li>• Charlas sobre salud, temperatura y arbolado urbano.</li>
-              <li>• Acompañamiento a comités barriales de reforestación.</li>
-              <li>• Entrega de guías digitales para cuidados posteriores.</li>
+            <ul class="list-disc list-inside space-y-2 text-emerald-900 text-sm md:text-base">
+              <li>Charlas sobre salud, temperatura y arbolado urbano.</li>
+              <li>Acompañamiento a comités barriales de reforestación.</li>
+              <li>Entrega de guías digitales para cuidados posteriores.</li>
             </ul>
           </div>
 
-        </div>
+          <button type="button" data-toggle-panel
+            class="w-full flex items-center justify-center gap-2 pb-3 text-emerald-800 text-sm font-medium focus:outline-none">
+            <span>Ver foto</span>
+            <svg data-arrow xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-300"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div
+            class="program-extra h-0 opacity-0 border-t border-emerald-100 transition-[height,opacity] duration-500 ease-out">
+            <img src="images/charla.jpg" alt="Charlas y acompañamiento comunitario"
+              class="w-full max-h-64 object-cover">
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
+
 
 
   <!-- RESULTADOS -->

@@ -449,6 +449,74 @@ const setupNewsletter = () => {
   });
 };
 
+
+/* ============================
+   PROGRAMAS: CARDS DESPLEGABLES
+============================ */
+
+const setupProgramCards = () => {
+  const cards = document.querySelectorAll('.program-card');
+  if (!cards.length) return;
+
+  const closeCard = (card) => {
+    const panel = card.querySelector('.program-extra');
+    const arrow = card.querySelector('[data-arrow]');
+    if (!panel) return;
+
+    panel.style.height = '0px';
+    panel.classList.add('opacity-0');
+    arrow?.classList.remove('rotate-180');
+  };
+
+  const openCard = (card) => {
+    const panel = card.querySelector('.program-extra');
+    const arrow = card.querySelector('[data-arrow]');
+    if (!panel) return;
+
+    // Cerrar las demás
+    cards.forEach((c) => {
+      if (c !== card) closeCard(c);
+    });
+
+    // Altura real del contenido (imagen incluida)
+    const fullHeight = panel.scrollHeight;
+    panel.style.height = fullHeight + 'px';
+    panel.classList.remove('opacity-0');
+    arrow?.classList.add('rotate-180');
+  };
+
+  cards.forEach((card) => {
+    const trigger = card.querySelector('[data-toggle-panel]');
+    const panel = card.querySelector('.program-extra');
+
+    if (!trigger || !panel) return;
+
+    // Hover para desktop
+    card.addEventListener('mouseenter', () => {
+      openCard(card);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      closeCard(card);
+    });
+
+    // Click para móviles (y también funciona en desktop)
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isOpen = panel.style.height && panel.style.height !== '0px';
+
+      if (isOpen) {
+        closeCard(card);
+      } else {
+        openCard(card);
+      }
+    });
+  });
+};
+
+
 /* ===================
    AUTOEJECUCIÓN
 =================== */
@@ -464,6 +532,7 @@ const setupNewsletter = () => {
   showVideo();
   setupDiagnosticoCarousel();
   setupNewsletter();
+  setupProgramCards();
 
   const categoriesSelect = document.getElementById('categories');
   categoriesSelect?.addEventListener('change', e => filterProducts(e.target.value));
