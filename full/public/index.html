@@ -25,12 +25,15 @@
     <div class="container mx-auto px-4 py-4 flex items-center justify-between">
       <a href="#" class="font-bold text-2xl text-emerald-700">Sembrar <span class="text-lime-600">Futuro</span></a>
       <nav class="hidden md:flex gap-6 items-center">
+        <a href="#diagnostico" class="text-emerald-800 font-medium">Importancia</a>
+        <a href="#programas" class="text-emerald-800 font-medium">Programas</a>
         <a href="#resultados" class="text-emerald-800 font-medium">Resultados</a>
         <a href="#registrate" class="text-emerald-800 font-medium">Regístrate</a>
         <a href="#mercancia" class="text-emerald-800 font-medium">Mercancía</a>
         <a href="#votacion" class="text-emerald-800 font-medium">Votación</a>
         <a href="#donaciones" class="text-emerald-800 font-medium">Donaciones</a>
       </nav>
+
       <button class="md:hidden" aria-label="Abrir menú">☰</button>
     </div>
   </header>
@@ -150,6 +153,58 @@
   </section>
 
 
+
+
+  <!-- PROGRAMAS Y TALLERES -->
+  <section id="programas" class="py-12 lg:py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-emerald-900 text-center">
+          Programas y Talleres
+        </h2>
+        <p class="text-gray-600 text-center max-w-3xl mx-auto mb-10">
+          Sembrar Futuro trabaja con escuelas, barrios y organizaciones vecinales
+          para que la reforestación no sea solo una jornada aislada, sino un proceso
+          educativo y comunitario continuo.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Tarjeta 1 -->
+          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3">Talleres en escuelas</h3>
+            <ul class="space-y-2 text-emerald-800">
+              <li>• Introducción a árboles nativos y su importancia.</li>
+              <li>• Dinámicas sobre cambio climático y sombra urbana.</li>
+              <li>• Pequeños viveros escolares para cuidar plantines.</li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3">Jornadas comunitarias</h3>
+            <ul class="space-y-2 text-emerald-800">
+              <li>• Mapeo participativo de puntos críticos sin árboles.</li>
+              <li>• Siembra en parques, veredas y espacios barriales.</li>
+              <li>• Capacitación básica en riego y mantenimiento.</li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="p-6 rounded-2xl shadow-md bg-[#EAFBEF]">
+            <h3 class="text-xl font-bold text-emerald-900 mb-3">Charlas y acompañamiento</h3>
+            <ul class="space-y-2 text-emerald-800">
+              <li>• Charlas sobre salud, temperatura y arbolado urbano.</li>
+              <li>• Acompañamiento a comités barriales de reforestación.</li>
+              <li>• Entrega de guías digitales para cuidados posteriores.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- RESULTADOS -->
   <section id="resultados" class="py-12 lg:py-20 bg-emerald-900 text-white">
     <div class="container mx-auto px-4 text-center">
@@ -158,15 +213,15 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         <div class="bg-white text-emerald-900 p-6 rounded-2xl">
           <h3 class="text-3xl font-extrabold">4.900</h3>
-          <p class="font-medium">Árboles nativos sembrados</p>
+          <p class="font-medium">Árboles nativos sembrados en diversas zonas de Guayaquil</p>
         </div>
         <div class="bg-white text-emerald-900 p-6 rounded-2xl">
           <h3 class="text-3xl font-extrabold">Corredores</h3>
-          <p class="font-medium">Kilómetros de corredores verdes iniciados</p>
+          <p class="font-medium">Más de 10 kilómetros de corredores verdes iniciados</p>
         </div>
         <div class="bg-white text-emerald-900 p-6 rounded-2xl">
           <h3 class="text-3xl font-extrabold">Escuelas</h3>
-          <p class="font-medium">Programas educativos implementados</p>
+          <p class="font-medium">Programas educativos implementados en instituciones</p>
         </div>
       </div>
     </div>
@@ -247,7 +302,7 @@
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto bg-white rounded-2xl p-8 shadow">
         <h3 class="text-3xl font-bold mb-4 text-center">Mercancía</h3>
-        <p class="text-gray-600 mb-6 text-center">Camisetas, stickers y más. Apóyanos comprando algún artículo ¡Todas
+        <p class="text-gray-600 mb-6 text-center">Camisas, termos y más. Apóyanos comprando algún artículo ¡Todas
           las ganancias serán usadas para plantar más árboles!</p>
 
         <!-- Filtro por categoría -->
@@ -282,7 +337,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <!-- Formulario de votación -->
           <div class="bg-gradient-to-br from-emerald-50 to-lime-100 p-8 rounded-2xl shadow-2xl">
-            <h3 class="text-2xl font-bold mb-6">🗳️ Elige una Especie</h3>
+            <h3 class="text-2xl font-bold mb-6">Elige una Especie</h3>
             <form id="form_voting" class="bg-white p-6 rounded-lg shadow-lg">
               <label for="user_name" class="block text-gray-700 font-medium mb-1">Nombre:</label>
               <input type="text" id="user_name" name="user_name" placeholder="Tu nombre"
@@ -303,7 +358,7 @@
 
           <!-- Resultados en tiempo real -->
           <div class="py-4">
-            <h3 class="text-2xl font-bold mb-6">📊 Especies Más Votadas</h3>
+            <h3 class="text-2xl font-bold mb-6">Especies Más Votadas</h3>
             <div id="results" class="space-y-4">
               <div class="text-center py-8">
                 <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-4 border-emerald-600 border-t-4">
@@ -317,6 +372,7 @@
     </div>
   </section>
 
+
   <!-- DONACIONES -->
   <section id="donaciones" class="py-12 lg:py-20 bg-gray-50">
     <div class="container mx-auto px-4">
@@ -328,32 +384,31 @@
   </section>
 
 
-    <!-- Modal -->
-    <div id="newsletter-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-40 hidden">
-      <div class="max-w-sm w-full mx-4 p-8 bg-teal-900 rounded-2xl relative">
-        <!-- botón cerrar -->
-        <button id="newsletter-close"
-          class="absolute top-3 right-3 text-white/70 hover:text-white text-xl leading-none">
-          ×
+  <!-- Modal -->
+  <div id="newsletter-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-40 hidden">
+    <div class="max-w-sm w-full mx-4 p-8 bg-teal-900 rounded-2xl relative">
+      <!-- botón cerrar -->
+      <button id="newsletter-close" class="absolute top-3 right-3 text-white/70 hover:text-white text-xl leading-none">
+        ×
+      </button>
+
+      <h5 class="text-xl font-medium text-white mb-4">¡Mantente informado!</h5>
+      <p class="text-sm text-white opacity-80 leading-normal mb-6">
+        Suscríbete para recibir noticias sobre las jornadas de siembra y talleres.
+      </p>
+
+      <div class="flex flex-col">
+        <input id="newsletter-input"
+          class="h-12 w-full px-4 py-1 bg-white text-gray-800 placeholder-gray-500 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full"
+          type="email" placeholder="Tu correo electrónico..." />
+        <button id="newsletter-btn"
+          class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
+          Suscribirme
         </button>
-
-        <h5 class="text-xl font-medium text-white mb-4">¡Mantente informado!</h5>
-        <p class="text-sm text-white opacity-80 leading-normal mb-6">
-          Suscríbete para recibir noticias sobre las jornadas de siembra y talleres.
-        </p>
-
-        <div class="flex flex-col">
-          <input id="newsletter-input"
-            class="h-12 w-full px-4 py-1 bg-white text-gray-800 placeholder-gray-500 outline-none ring-offset-0 focus:ring-2 focus:ring-lime-500 shadow rounded-full"
-            type="email" placeholder="Tu correo electrónico..." />
-          <button id="newsletter-btn"
-            class="h-12 inline-flex mt-3 py-1 px-5 items-center justify-center font-medium text-teal-900 border border-lime-500 hover:border-white bg-lime-500 hover:bg-white rounded-full transition duration-200">
-            Suscribirme
-          </button>
-        </div>
-        <p id="newsletter-msg" class="text-sm text-white mt-3 hidden"></p>
       </div>
+      <p id="newsletter-msg" class="text-sm text-white mt-3 hidden"></p>
     </div>
+  </div>
   </section>
 
 
@@ -382,15 +437,15 @@
   <footer class="bg-emerald-900 text-emerald-50 py-10 mt-16">
     <div class="container mx-auto px-6">
 
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-
+      <!-- Bloque principal centrado -->
+      <div class="flex flex-col items-center gap-4 text-center">
         <!-- Lema -->
-        <p class="text-sm opacity-90 flex items-center gap-2">
+        <p class="text-sm opacity-90">
           Plantando esperanza para el futuro
         </p>
 
         <!-- Botón -->
-        <button id="open-newsletter"
+        <button id="newsletter-open"
           class="px-6 py-2 bg-lime-500 text-emerald-900 font-semibold rounded-full shadow hover:bg-white hover:text-emerald-900 transition">
           Recibir noticias
         </button>
@@ -405,6 +460,7 @@
       </div>
     </div>
   </footer>
+
 
 
   <!-- scripcito -->

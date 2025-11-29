@@ -1,12 +1,13 @@
 "use strict";
 
 // Importar funciones
-import { fetchProducts, fetchCategories } from './functions.js';
+import { fetchProducts, fetchCategories, fetchSpecies } from './functions.js';
 import { saveVote, getVotes } from './firebase.js';
 
 // Variables globales
 let allProducts = [];
 let allCategories = [];
+let allSpecies = [];
 
 /* =============================
    CARRUSEL DE DIAGNÓSTICO
@@ -77,51 +78,66 @@ const setupDiagnosticoCarousel = () => {
 ====================================== */
 
 const renderProducts = () => {
-  fetchProducts('https://data-dawm.github.io/datum/reseller/products.json')
+  fetchProducts('data/merch-products.json')
     .then(result => {
       if (result.success) {
         allProducts = result.body;
         displayProducts(allProducts.slice(0, 6));
-        populateVotingSelect(allProducts);
       } else {
         showError('productos', result.body);
       }
     });
 };
 
-const displayProducts = (products) => {
+const displayProducts = (products) => { 
   const container = document.getElementById('products-container');
 
   if (products.length === 0) {
     container.innerHTML = `
       <div class="col-span-full text-center py-8">
-        <p class="text-gray-600 dark:text-gray-300">No se encontraron productos para esta categoría.</p>
+        <p class="text-gray-600 dark:text-gray-300">
+          No se encontraron productos para esta categoría.
+        </p>
       </div>
     `;
     return;
   }
 
   container.innerHTML = products.map(product => `
-    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700">
-      <div class="relative h-48 bg-gradient-to-br from-green-100 to-green-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center">
-        <img src="${product.imgUrl}" alt="${product.title}" class="h-full w-full object-contain">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-200 
+                flex flex-col">
+
+      <!-- Imagen (altura mayor para uniformidad) -->
+      <div class="relative h-64 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+        <img src="${product.imgUrl}" alt="${product.title}" class="max-h-full max-w-full object-contain">
       </div>
-      <div class="p-6">
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-green-600 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300 mb-2">
-          ${product.category}
-        </span>
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-          ${product.title.length > 30 ? product.title.substring(0, 30) + '...' : product.title}
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-          ${product.description || 'Producto eco-amigable para reforestación y conservación'}
-        </p>
-        <div class="flex items-center justify-between">
-          <span class="text-2xl font-bold text-green-600 dark:text-green-400">$${product.price}</span>
-          <a href="${product.productURL}" target="_blank" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-sm font-medium">
+
+      <!-- Contenedor verde: mismo alto SIEMPRE + flex interno -->
+      <div class="p-6 bg-emerald-900 text-white flex flex-col justify-between flex-1">
+
+        <!-- Título + descripción -->
+        <div>
+          <h3 class="text-xl font-bold mb-2">
+            ${product.title.length > 30 ? product.title.substring(0, 30) + '...' : product.title}
+          </h3>
+
+          <p class="mb-4 text-sm text-emerald-100 leading-relaxed">
+            ${product.description || 'Producto eco-amigable para reforestación y conservación'}
+          </p>
+        </div>
+
+        <!-- Precio + botón -->
+        <div class="flex items-center justify-between mt-4">
+          <span class="text-2xl font-bold text-green-400">
+            $${product.price}
+          </span>
+
+          <a href="${product.productURL}" target="_blank"
+             class="px-4 py-2 bg-lime-400 text-emerald-900 rounded-lg hover:bg-lime-300 transition text-sm font-medium">
             Ver más
           </a>
         </div>
+
       </div>
     </div>
   `).join('');
@@ -129,7 +145,7 @@ const displayProducts = (products) => {
 
 const renderCategories = async () => {
   try {
-    const result = await fetchCategories('https://data-dawm.github.io/datum/reseller/categories.xml');
+    const result = await fetchCategories('data/merch-categories.xml');
 
     if (result.success) {
       const container = document.getElementById('categories');
@@ -169,20 +185,37 @@ const filterProducts = (categoryName) => {
   displayProducts(filtered);
 };
 
+/* ======================================
+   ESPECIES — PARA VOTACIONES
+====================================== */
+
+const loadSpecies = () => {
+  fetchSpecies('data/species.json')
+    .then(result => {
+      if (result.success) {
+        allSpecies = result.body;   // [{ id, name, ... }, ...]
+        populateVotingSelect(allSpecies);
+        displayVotes();             // ya podemos mostrar la tabla con nombres correctos
+      } else {
+        console.error('Error al cargar especies:', result.body);
+      }
+    });
+};
+
 /* ============================
    VOTACIONES Firebase
 ============================ */
 
-const populateVotingSelect = (products) => {
+const populateVotingSelect = (species) => {
   const select = document.getElementById('select_product');
   if (!select) return;
 
   select.innerHTML = '<option value="" disabled selected>Selecciona una especie</option>';
 
-  products.forEach(product => {
+  species.forEach(sp => {
     const option = document.createElement('option');
-    option.value = product.asin;
-    option.textContent = product.title;
+    option.value = sp.id;       // id de especie que se guarda en Firebase
+    option.textContent = sp.name;
     select.appendChild(option);
   });
 };
@@ -214,10 +247,9 @@ const enableForm = () => {
         btn.textContent = oldText;
 
         if (result.success) {
-          // Ya no usamos alert, solo toast
           form.reset();
           displayVotes();
-          showToast(); // mostrar "¡Voto registrado!" solo aquí
+          showToast();
         } else {
           alert('❌ ' + result.message);
         }
@@ -252,9 +284,10 @@ const displayVotes = async () => {
         voteCounts[vote.productId] = (voteCounts[vote.productId] || 0) + 1;
       });
 
-      const productNames = {};
-      allProducts.forEach(p => {
-        productNames[p.asin] = p.title;
+      // Mapa id de especie -> nombre
+      const speciesNames = {};
+      allSpecies.forEach(s => {
+        speciesNames[s.id] = s.name;
       });
 
       let html = `
@@ -269,7 +302,10 @@ const displayVotes = async () => {
             <tbody>
       `;
 
-      const sorted = Object.entries(voteCounts).sort((a, b) => b[1] - a[1]);
+      // 1) Ignorar votos antiguos que no tengan especie en speciesNames
+      const sorted = Object.entries(voteCounts)
+        .filter(([id]) => speciesNames[id]) // solo ids que EXISTEN en species.json
+        .sort((a, b) => b[1] - a[1]);
 
       if (sorted.length === 0) {
         html += `
@@ -282,10 +318,16 @@ const displayVotes = async () => {
       } else {
         sorted.forEach(([id, total], i) => {
           const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '';
+
           html += `
             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-              <td class="px-6 py-4">${medal} ${productNames[id] || id}</td>
-              <td class="px-6 py-4 text-center">${total}</td>
+              <!-- 2) Forzar color de texto claro en las filas -->
+              <td class="px-6 py-4 text-gray-900 dark:text-gray-100">
+                ${medal} ${speciesNames[id]}
+              </td>
+              <td class="px-6 py-4 text-center text-gray-900 dark:text-gray-100">
+                ${total}
+              </td>
             </tr>
           `;
         });
@@ -305,6 +347,7 @@ const displayVotes = async () => {
     `;
   }
 };
+
 
 /* =======================
    TOAST / VIDEO / ERRORES
@@ -387,7 +430,6 @@ const setupNewsletter = () => {
     }
 
     try {
-      // Ejemplo de POST (no guarda realmente, solo para la demo / rúbrica)
       await fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -416,9 +458,9 @@ const setupNewsletter = () => {
 
   renderProducts();
   renderCategories();
+  loadSpecies();       // ← carga species.json y luego displayVotes()
 
   enableForm();
-  displayVotes();
   showVideo();
   setupDiagnosticoCarousel();
   setupNewsletter();
